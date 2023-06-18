@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8-nginx-deployment
+  labels:
+    app: webg
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webg
+  template:
+    metadata:
+      labels:
+        app: webg
+        version: latest
+    spec:
+      containers:
+        - name: k8-nginx
+          image: nginx
+          ports:
+            - containerPort: 80
