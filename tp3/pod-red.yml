@@ -10,7 +10,7 @@ spec:
      - name: k8-tp3
        image: mmumshad/simple-webapp-color
        ports:
-         - containerPort: 80
+         - containerPort: 8080
        env:
          - name: APP_COLOR
            value: red
