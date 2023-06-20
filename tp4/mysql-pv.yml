@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-pv
+  labels:
+    app: web
+spec:
+  containers:
+     - name: k8s-mysql-pv
+       image: mysql
+       volumeMounts:
+         - mountPath: /opt
+           name: data-volume
+       env:
+         - name: MYSQL_ROOT_PASSWORD
+           value: password
+       ports:
+        - containerPort: 3306
+          name: mysql
+  volumes:
+         - name: data-volume
+           persistentVolumeClaim:
+             claimName: k8s-pvc
